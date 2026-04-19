@@ -1,0 +1,68 @@
+<!---use the default 404 content from shopify in the en.default.json-->
+
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="text-center max-w-xl">
+
+        <h1 class="text-4xl font-bold mb-4">
+            {{ section.settings.title }}
+        </h1>
+
+        <p class="text-gray-500 mb-6">
+            {{ section.settings.description }}
+        </p>
+
+        {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}"  style="
+            background-color: {{ section.settings.button_bg }};
+            color: {{ section.settings.button_text }};"
+            class="inline-block px-6 py-3 bg-black text-white rounded-lg hover:opacity-90 transition">
+            {{ section.settings.button_label }}
+        </a>
+        {% endif %}
+
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "404 Page",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "404 Heading title",
+                "default": "Oops! Page not found"
+            },
+            {
+                "type": "textarea",
+                "id": "description",
+                "label": "Description",
+                "default": "The page you’re looking for doesn’t exist or has been moved."
+            },
+            {
+                "type": "text",
+                "id": "button_label",
+                "label": "Button Label",
+                "default": "Back to Home"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button Link",
+                "default": "/"
+            },
+            {
+                "type": "color",
+                "id": "button_bg",
+                "label": "Button Background Color",
+                "default": "#000000"
+            },
+            {
+                "type": "color",
+                "id": "button_text",
+                "label": "Button Text Color",
+                "default": "#ffffff"
+            }
+        ]
+    }
+{% endschema %}
